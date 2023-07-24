@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "2.12.14"
+ThisBuild / scalaVersion := "2.12.18"
 
 Global / excludeLintKeys += Keys.parallelExecution
 
