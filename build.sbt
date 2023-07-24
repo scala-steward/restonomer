@@ -55,6 +55,8 @@ val s3MockDependencies = Seq("io.findify" %% "s3mock" % s3MockVersion % "it,test
 
 val gcsConnectorDependencies = Seq("com.google.cloud.bigdataoss" % "gcs-connector" % gcsConnectorVersion)
 
+val gcsClientDependencies = Seq("com.google.cloud" % "google-cloud-storage" % "2.24.0")
+
 val scalaCompatCollectionDependencies = Seq("org.scala-lang.modules" %% "scala-collection-compat" % "2.1.6")
 
 // ----- MODULE DEPENDENCIES ----- //
@@ -69,7 +71,8 @@ val restonomerCoreDependencies =
     wireMockDependencies ++
     s3MockDependencies ++
     odelayDependencies ++
-    gcsConnectorDependencies
+    gcsConnectorDependencies ++
+    gcsClientDependencies
 
 val restonomerSparkUtilsDependencies =
   sparkDependencies ++
@@ -132,6 +135,8 @@ ThisBuild / credentials += Credentials(
   "teamclairvoyant",
   System.getenv("GITHUB_TOKEN")
 )
+
+mainClass in Compile := Some("com.clairvoyant.restonomer.core.app.RestonomerApp")
 
 // ----- ASSEMBLY MERGE STRATEGY ----- //
 

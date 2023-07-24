@@ -17,41 +17,43 @@ object RestonomerContext {
       restonomerContextDirectoryPath: String = DEFAULT_RESTONOMER_CONTEXT_DIRECTORY_PATH,
       configVariablesFromApplicationArgs: Map[String, String] = Map()
   ): RestonomerContext =
-    if (fileExists(restonomerContextDirectoryPath))
-      new RestonomerContext(restonomerContextDirectoryPath, configVariablesFromApplicationArgs)
-    else
-      throw new RestonomerException(
-        s"The restonomerContextDirectoryPath: $restonomerContextDirectoryPath does not exists."
-      )
-
+    // if (fileExists(restonomerContextDirectoryPath))
+    //   new RestonomerContext(restonomerContextDirectoryPath, configVariablesFromApplicationArgs)
+    // else
+    //   throw new RestonomerException(
+    //     s"The restonomerContextDirectoryPath: $restonomerContextDirectoryPath does not exists."
+    //   )
+    new RestonomerContext(restonomerContextDirectoryPath, configVariablesFromApplicationArgs)
 }
 
 class RestonomerContext(
     val restonomerContextDirectoryPath: String,
     val configVariablesFromApplicationArgs: Map[String, String]
 ) {
-  private val CONFIG_VARIABLES_FILE_PATH = s"$restonomerContextDirectoryPath/uncommitted/config_variables.conf"
+  //private val CONFIG_VARIABLES_FILE_PATH = s"$restonomerContextDirectoryPath/uncommitted/config_variables.conf"
   private val APPLICATION_CONFIG_FILE_PATH = s"$restonomerContextDirectoryPath/application.conf"
   private val CHECKPOINTS_CONFIG_DIRECTORY_PATH = s"$restonomerContextDirectoryPath/checkpoints"
 
   private val configVariablesFromFile = {
     implicit val configVariablesSubstitutor: Option[ConfigVariablesSubstitutor] = None
 
-    if (fileExists(CONFIG_VARIABLES_FILE_PATH))
-      loadConfigFromFile[Map[String, String]](CONFIG_VARIABLES_FILE_PATH, deriveConfig[Map[String, String]])
-    else
+    // if (fileExists(CONFIG_VARIABLES_FILE_PATH))
+    //   loadConfigFromFile[Map[String, String]](CONFIG_VARIABLES_FILE_PATH, deriveConfig[Map[String, String]])
+    // else
       Map[String, String]()
   }
 
   private val applicationConfig = {
     implicit val configVariablesSubstitutor: Option[ConfigVariablesSubstitutor] = None
 
-    if (fileExists(APPLICATION_CONFIG_FILE_PATH))
-      loadConfigFromFile[ApplicationConfig](APPLICATION_CONFIG_FILE_PATH, ApplicationConfig.config)
-    else
-      throw new FileNotFoundException(
-        s"The application config file with the path: $APPLICATION_CONFIG_FILE_PATH does not exists."
-      )
+    loadConfigFromFile[ApplicationConfig](APPLICATION_CONFIG_FILE_PATH, ApplicationConfig.config)
+
+    // if (fileExists(APPLICATION_CONFIG_FILE_PATH))
+    //   loadConfigFromFile[ApplicationConfig](APPLICATION_CONFIG_FILE_PATH, ApplicationConfig.config)
+    // else
+    //   throw new FileNotFoundException(
+    //     s"The application config file with the path: $APPLICATION_CONFIG_FILE_PATH does not exists."
+    //   )
   }
 
   implicit val configVariablesSubstitutor: Option[ConfigVariablesSubstitutor] = Some(
@@ -60,13 +62,15 @@ class RestonomerContext(
 
   def runCheckpoint(checkpointFilePath: String): Unit = {
     val absoluteCheckpointFilePath = s"$CHECKPOINTS_CONFIG_DIRECTORY_PATH/$checkpointFilePath"
-
-    if (fileExists(absoluteCheckpointFilePath))
-      runCheckpoint(loadConfigFromFile[CheckpointConfig](absoluteCheckpointFilePath, CheckpointConfig.config))
-    else
-      throw new FileNotFoundException(
-        s"The checkpoint file with the path: $absoluteCheckpointFilePath does not exists."
-      )
+    runCheckpoint(loadConfigFromFile[CheckpointConfig](absoluteCheckpointFilePath, CheckpointConfig.config))
+    
+    
+    // if (fileExists(absoluteCheckpointFilePath))
+    //   runCheckpoint(loadConfigFromFile[CheckpointConfig](absoluteCheckpointFilePath, CheckpointConfig.config))
+    // else
+    //   throw new FileNotFoundException(
+    //     s"The checkpoint file with the path: $absoluteCheckpointFilePath does not exists."
+    //   )
   }
 
   def runCheckpointsUnderDirectory(checkpointsDirectoryPath: String): Unit = {
