@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CheckpointConfig &mdash; restonomer 2.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="What is token request ?" href="restonomer_token_request.html" />
+    <link rel="prev" title="Run single checkpoint" href="running_checkpoints.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            restonomer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_getting_started.html">Add SBT Dependency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_getting_started.html#simple-restonomer-client-application">Simple Restonomer Client Application</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Restonomer Context</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html">Restonomer Context Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html#checkpoints">Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html#application-configurations">Application Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html#config-variables">Config Variables</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Running Checkpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="running_checkpoints.html">Run single checkpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running_checkpoints.html#run-all-checkpoints-under-specific-directory">Run all checkpoints under specific directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running_checkpoints.html#run-all-checkpoints">Run all checkpoints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Config Classes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CheckpointConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#tokenconfig">TokenConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#requestconfig">RequestConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#retryconfig">RetryConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#dataconfig">DataConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#dataresponseconfig">DataResponseConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#dataresponsebodyconfig">DataResponseBodyConfig</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Token Request</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_token_request.html">What is token request ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_token_request.html#how-to-use-token-response-in-data-request">How to use token response in data request ?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Authentication</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_authentication.html">Types of authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#basic-authentication">Basic Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#bearer-authentication">Bearer Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#api-key-authentication">API Key Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#jwt-authentication">JWT Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#digest-authentication">Digest Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#oauth2-authentication">OAuth2 Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#aws-signature-authentication">AWS Signature Authentication</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Transformations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_transformations.html">What is restonomer transformation ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_transformations.html#types-of-restonomer-transformations">Types of restonomer transformations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#addcolumn">AddColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#addprefixtocolumnnames">AddPrefixToColumnNames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#addsuffixtocolumnnames">AddSuffixToColumnNames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumns">CastColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumnsbasedonprefix">CastColumnsBasedOnPrefix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumnsbasedonsubstring">CastColumnsBasedOnSubstring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumnsbasedonsuffix">CastColumnsBasedOnSuffix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castfromtodatatypes">CastFromToDataTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castnestedcolumn">CastNestedColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#changecolumncase">ChangeColumnCase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#convertcolumntojson">ConvertColumnToJson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#deletecolumns">DeleteColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#explodecolumn">ExplodeColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#filterrecords">FilterRecords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#flattenschema">FlattenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#renamecolumns">RenameColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#replaceemptystringswithnulls">ReplaceEmptyStringsWithNulls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#replacestringincolumnvalue">ReplaceStringInColumnValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#selectcolumns">SelectColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#splitcolumn">SplitColumn</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Persistence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_persistence.html">What is restonomer persistence ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_persistence.html#types-of-restonomer-persistence">Types of restonomer persistence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_persistence.html#filesystem">FileSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_persistence.html#s3bucket">S3Bucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_persistence.html#gcsbucket">GCSBucket</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Request Retry Mechanism</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_retry.html">What is retry mechanism ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_retry.html#configs-for-retry">Configs for retry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_retry.html#default-retry-behaviour">Default Retry Behaviour</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pagination</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_pagination.html">What is Restonomer Pagination ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_pagination.html#types-of-restonomer-pagination">Types of Restonomer Pagination</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#pagenumberwithtotalrecordsbasedpagination">PageNumberWithTotalRecordsBasedPagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#pagenumberwithtotalpagesbasedpagination">PageNumberWithTotalPagesBasedPagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#cursorbasedpagination">CursorBasedPagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#offsetbasedpagination">OffsetBasedPagination</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Request Body</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_request_body.html">Request Body</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_request_body.html#textdatabody">TextDataBody</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_request_body.html#formdatabody">FormDataBody</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_request_body.html#jsondatabody">JSONDataBody</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Response Body Formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_response_body_formats.html">JSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_response_body_formats.html#csv">CSV</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">restonomer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CheckpointConfig</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/restonomer_config_classes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="running_checkpoints.html" class="btn btn-neutral float-left" title="Run single checkpoint" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="restonomer_token_request.html" class="btn btn-neutral float-right" title="What is token request ?" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="checkpointconfig">
+<h1>CheckpointConfig<a class="headerlink" href="#checkpointconfig" title="Permalink to this heading"></a></h1>
+<p>The checkpoint configuration is the entry point for the restonomer framework.
+The restonomer framework expects you to provide checkpoint configurations to the restonomer context instance in order to
+trigger a checkpoint.</p>
+<p>The checkpoint configuration contains below config options to be provided by the user:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>name</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>Unique name for your checkpoint</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>token</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>Token request configuration represented by <code class="docutils literal notranslate"><span class="pre">TokenConfig</span></code> class</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>data</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>Main data request configuration represented by <code class="docutils literal notranslate"><span class="pre">DataConfig</span></code> class</p></td>
+</tr>
+</tbody>
+</table>
+<p>User can provide checkpoint configuration file in HOCON format in the below format:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>name = &quot;sample_postman_checkpoint&quot;
+
+token = {
+  token-request = {
+    url = &quot;http://localhost:8080/token-response-body&quot;
+
+    authentication = {
+      type = &quot;BearerAuthentication&quot;
+      bearer-token = &quot;test_token_123&quot;
+    }
+  }
+
+  token-response-placeholder = &quot;ResponseBody&quot;
+}
+
+data = {
+  data-request = {
+    url = &quot;https://postman-echo.com/basic-auth&quot;
+
+    authentication = {
+      type = &quot;BasicAuthentication&quot;
+      user-name = &quot;postman&quot;
+      password = &quot;token[$.secret]&quot;
+    }
+  }
+
+  data-response = {
+    body = {
+      type = &quot;JSON&quot;
+    }
+
+    persistence = {
+      type = &quot;FileSystem&quot;
+      file-format = &quot;JSON&quot;
+      file-path = &quot;./rest-output/&quot;
+    }
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="tokenconfig">
+<h1>TokenConfig<a class="headerlink" href="#tokenconfig" title="Permalink to this heading"></a></h1>
+<p>The configurations related to the token request are represented by <code class="docutils literal notranslate"><span class="pre">TokenConfig</span></code> class:</p>
+<p>User need to provide below configs for <code class="docutils literal notranslate"><span class="pre">TokenConfig</span></code>:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>token-request</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The configuration for the token request to be triggered. It follows the same structure as <code class="docutils literal notranslate"><span class="pre">RequestConfig</span></code> class.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>token-response-placeholder</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The place holder where the token response will have the credentials. <br/>It can contain 2 values: <code class="docutils literal notranslate"><span class="pre">ResponseBody</span></code> and <code class="docutils literal notranslate"><span class="pre">ResponseHeaders</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The token config are provided in the checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>token = {
+  token-request = {
+    url = &quot;http://localhost:8080/token-response-body&quot;
+
+    authentication = {
+      type = &quot;BearerAuthentication&quot;
+      bearer-token = &quot;test_token_123&quot;
+    }
+  }
+
+  token-response-placeholder = &quot;ResponseBody&quot;
+}
+</pre></div>
+</div>
+</section>
+<section id="requestconfig">
+<h1>RequestConfig<a class="headerlink" href="#requestconfig" title="Permalink to this heading"></a></h1>
+<p>The basic http request configurations are represented by <code class="docutils literal notranslate"><span class="pre">RequestConfig</span></code> class.</p>
+<p>The request configuration contains below config options to be provided by the user:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>method</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">GET</span></code></p></td>
+<td class="text-left"><p>Http request method</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>url</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>Url for the REST API request</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>query-params</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The map of query parameters</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>authentication</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The type of authentication mechanism supported by Http Request represented by <code class="docutils literal notranslate"><span class="pre">RestonomerAuthentication</span></code> class</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>body</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The request body represented by <code class="docutils literal notranslate"><span class="pre">RestonomerRequestBody</span></code> body to be send along with the request</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>headers</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>List of headers to provided as a part of Http request in the form of key-value pairs</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>retry</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The auto retry configuration represented by <code class="docutils literal notranslate"><span class="pre">RetryConfig</span></code> class</p></td>
+</tr>
+</tbody>
+</table>
+<p>The request configuration can be represented in the checkpoint file in below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>data-request = {
+  method = &quot;GET&quot;
+
+  url = &quot;http://localhost:8080/custom-headers&quot;
+
+  query-params = {
+    &quot;query_param_name_1&quot; = &quot;query_param_value_1&quot;,
+    &quot;query_param_name_2&quot; = &quot;query_param_value_2&quot;
+  }
+
+  authentication = {
+    type = &quot;BasicAuthentication&quot;
+    user-name = &quot;test_user&quot;
+    password = &quot;test_password&quot;
+  }
+
+  body = {
+    type = &quot;TextDataBody&quot;
+    data = &quot;Sample request body&quot;
+  }
+  
+  headers = {
+    &quot;header_key_1&quot; = &quot;header_value_1&quot;,
+    &quot;header_key_2&quot; = &quot;header_value_2&quot;
+  }
+
+  retry = {
+    max-retries = 10
+    status-codes-to-retry = [429]
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="retryconfig">
+<h1>RetryConfig<a class="headerlink" href="#retryconfig" title="Permalink to this heading"></a></h1>
+<p>The configurations related to the auto retry mechanism are represented by <code class="docutils literal notranslate"><span class="pre">RetryConfig</span></code> class.</p>
+<p>User need to provide below configs for Retry Configuration:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>max-retries</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>20</p></td>
+<td class="text-left"><p>This config tells restonomer the maximum number of attempts to retry in case of a request failure</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>status-codes-to-retry</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>[403, 429, 502, 401, 500, 504, 503, 408]</p></td>
+<td class="text-left"><p>This config provides the restonomer with the list of response status codes for which user wants restonomer to retry the request.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The retry configurations are provided in the checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>retry = {
+  max-retries = 5
+  status-codes-to-retry = [429, 301]
+}
+</pre></div>
+</div>
+</section>
+<section id="dataconfig">
+<h1>DataConfig<a class="headerlink" href="#dataconfig" title="Permalink to this heading"></a></h1>
+<p>The configurations related to the main data request and response are represented by <code class="docutils literal notranslate"><span class="pre">DataConfig</span></code> class.</p>
+<p>User needs to provide below configs for data configuration:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>data-request</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The configuration for the main data request to be triggered. It follows the same structure as <code class="docutils literal notranslate"><span class="pre">RequestConfig</span></code> class.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>data-response</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The configuration for defining the main data response like format, transformations, persistence, etc. It is represented by <code class="docutils literal notranslate"><span class="pre">DataResponseConfig</span></code> class.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The data config is represented in checkpoint file in below format:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>data = {
+  data-request = {
+    url = &quot;https://postman-echo.com/basic-auth&quot;
+
+    authentication = {
+      type = &quot;BasicAuthentication&quot;
+      user-name = &quot;postman&quot;
+      password = &quot;password&quot;
+    }
+  }
+
+  data-response = {
+    body = {
+      type = &quot;JSON&quot;
+    }
+
+    persistence = {
+      type = &quot;FileSystem&quot;
+      file-format = &quot;JSON&quot;
+      file-path = &quot;./rest-output/&quot;
+    }
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="dataresponseconfig">
+<h1>DataResponseConfig<a class="headerlink" href="#dataresponseconfig" title="Permalink to this heading"></a></h1>
+<p>In restonomer framework, the details about the http response (like response body format, transformations, persistence) are captured via <code class="docutils literal notranslate"><span class="pre">DataResponseConfig</span></code> class.</p>
+<p>User need to provide below configs for Data Response Configuration:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>body</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The body config represented by <code class="docutils literal notranslate"><span class="pre">DataResponseBodyConfig</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>transformations</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>List of transformations to be applied on the restonomer response dataframe</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>persistence</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The persistence attribute that tells where to persist the transformed restonomer response dataframe</p></td>
+</tr>
+</tbody>
+</table>
+<p>The response configurations are provided in the checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>data-response = {
+  body = {
+    type = &quot;JSON&quot;
+  }
+
+  transformations = [
+    {
+      type = &quot;AddColumn&quot;
+      column-name = &quot;col_D&quot;
+      column-value = &quot;val_D&quot;
+      column-data-type = &quot;string&quot;
+    }
+  ]
+  
+  persistence = {
+    type = &quot;FileSystem&quot;
+    file-format = &quot;JSON&quot;
+    file-path = &quot;./rest-output/&quot;
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="dataresponsebodyconfig">
+<h1>DataResponseBodyConfig<a class="headerlink" href="#dataresponsebodyconfig" title="Permalink to this heading"></a></h1>
+<p>In restonomer framework, the details about the http response body are captured via <code class="docutils literal notranslate"><span class="pre">DataResponseBodyConfig</span></code> class.</p>
+<p>User need to provide below configs for Data Response Body Configuration:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Config Name</p></th>
+<th class="head text-center"><p>Mandatory</p></th>
+<th class="head text-center"><p>Default Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>type</p></td>
+<td class="text-center"><p>Yes</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>The response body format returned by the rest api. It can hold values like <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">csv</span></code> and <code class="docutils literal notranslate"><span class="pre">xml</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>data-column</p></td>
+<td class="text-center"><p>No</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-left"><p>This is used in case the response is of json format and the dataset is not present at the root level but in some other attribute of json.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The response body configurations are provided in the checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>body = {
+  type = &quot;JSON&quot;
+  data-column = &quot;data.items&quot;
+}
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="running_checkpoints.html" class="btn btn-neutral float-left" title="Run single checkpoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="restonomer_token_request.html" class="btn btn-neutral float-right" title="What is token request ?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Clairvoyant.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Body &mdash; restonomer 2.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="JSON" href="restonomer_response_body_formats.html" />
+    <link rel="prev" title="What is Restonomer Pagination ?" href="restonomer_pagination.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            restonomer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_getting_started.html">Add SBT Dependency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_getting_started.html#simple-restonomer-client-application">Simple Restonomer Client Application</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Restonomer Context</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html">Restonomer Context Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html#checkpoints">Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html#application-configurations">Application Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_context.html#config-variables">Config Variables</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Running Checkpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="running_checkpoints.html">Run single checkpoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running_checkpoints.html#run-all-checkpoints-under-specific-directory">Run all checkpoints under specific directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running_checkpoints.html#run-all-checkpoints">Run all checkpoints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Config Classes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html">CheckpointConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html#tokenconfig">TokenConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html#requestconfig">RequestConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html#retryconfig">RetryConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html#dataconfig">DataConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html#dataresponseconfig">DataResponseConfig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_config_classes.html#dataresponsebodyconfig">DataResponseBodyConfig</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Token Request</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_token_request.html">What is token request ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_token_request.html#how-to-use-token-response-in-data-request">How to use token response in data request ?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Authentication</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_authentication.html">Types of authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#basic-authentication">Basic Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#bearer-authentication">Bearer Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#api-key-authentication">API Key Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#jwt-authentication">JWT Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#digest-authentication">Digest Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#oauth2-authentication">OAuth2 Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_authentication.html#aws-signature-authentication">AWS Signature Authentication</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Transformations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_transformations.html">What is restonomer transformation ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_transformations.html#types-of-restonomer-transformations">Types of restonomer transformations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#addcolumn">AddColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#addprefixtocolumnnames">AddPrefixToColumnNames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#addsuffixtocolumnnames">AddSuffixToColumnNames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumns">CastColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumnsbasedonprefix">CastColumnsBasedOnPrefix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumnsbasedonsubstring">CastColumnsBasedOnSubstring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castcolumnsbasedonsuffix">CastColumnsBasedOnSuffix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castfromtodatatypes">CastFromToDataTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#castnestedcolumn">CastNestedColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#changecolumncase">ChangeColumnCase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#convertcolumntojson">ConvertColumnToJson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#deletecolumns">DeleteColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#explodecolumn">ExplodeColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#filterrecords">FilterRecords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#flattenschema">FlattenSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#renamecolumns">RenameColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#replaceemptystringswithnulls">ReplaceEmptyStringsWithNulls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#replacestringincolumnvalue">ReplaceStringInColumnValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#selectcolumns">SelectColumns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_transformations.html#splitcolumn">SplitColumn</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Persistence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_persistence.html">What is restonomer persistence ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_persistence.html#types-of-restonomer-persistence">Types of restonomer persistence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_persistence.html#filesystem">FileSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_persistence.html#s3bucket">S3Bucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_persistence.html#gcsbucket">GCSBucket</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Request Retry Mechanism</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_retry.html">What is retry mechanism ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_retry.html#configs-for-retry">Configs for retry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_retry.html#default-retry-behaviour">Default Retry Behaviour</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pagination</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_pagination.html">What is Restonomer Pagination ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_pagination.html#types-of-restonomer-pagination">Types of Restonomer Pagination</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#pagenumberwithtotalrecordsbasedpagination">PageNumberWithTotalRecordsBasedPagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#pagenumberwithtotalpagesbasedpagination">PageNumberWithTotalPagesBasedPagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#cursorbasedpagination">CursorBasedPagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restonomer_pagination.html#offsetbasedpagination">OffsetBasedPagination</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Request Body</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Request Body</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#textdatabody">TextDataBody</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formdatabody">FormDataBody</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jsondatabody">JSONDataBody</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Response Body Formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_response_body_formats.html">JSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restonomer_response_body_formats.html#csv">CSV</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">restonomer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Request Body</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/restonomer_request_body.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="restonomer_pagination.html" class="btn btn-neutral float-left" title="What is Restonomer Pagination ?" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="restonomer_response_body_formats.html" class="btn btn-neutral float-right" title="JSON" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="request-body">
+<h1>Request Body<a class="headerlink" href="#request-body" title="Permalink to this heading"></a></h1>
+<section id="textdatabody">
+<h2>TextDataBody<a class="headerlink" href="#textdatabody" title="Permalink to this heading"></a></h2>
+<p>In its simplest form, the request’s body can be set as a String.</p>
+<p>A String/Text body can be set on a request in checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>body = {
+  type = &quot;TextDataBody&quot;
+  data = &quot;Sample request body&quot;
+}
+</pre></div>
+</div>
+<p>Below is the full example of checkpoint file:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>name = &quot;checkpoint_text_data_request_body&quot;
+
+data = {
+  data-request = {
+    url = &quot;http://localhost:8080/text-data-request-body&quot;
+
+    body = {
+      type = &quot;TextDataBody&quot;
+      data = &quot;Hello World&quot;
+    }
+  }
+
+  data-response = {
+    body = {
+      type = &quot;JSON&quot;
+    }
+
+    persistence = {
+      type = &quot;FileSystem&quot;
+      file-format = &quot;JSON&quot;
+      file-path = &quot;/tmp/body&quot;
+    }
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="formdatabody">
+<h2>FormDataBody<a class="headerlink" href="#formdatabody" title="Permalink to this heading"></a></h2>
+<p>The FormData provides a way to construct a set of key/value pairs representing form fields and their values.
+It uses the same format a form would use if the encoding type were set to “multipart/form-data”.</p>
+<p>A form data body can be set on a request in checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>body = {
+  type = &quot;FormDataBody&quot;
+  data = {
+    &quot;k1&quot; = &quot;v1&quot;
+    &quot;k2&quot; = &quot;v2&quot;
+  }
+}
+</pre></div>
+</div>
+<p>Below is the full example of checkpoint file:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>name = &quot;checkpoint_form_data_request_body&quot;
+
+data = {
+  data-request = {
+    url = &quot;http://localhost:8080/form-data-request-body&quot;
+
+    body = {
+      type = &quot;FormDataBody&quot;
+      data = {
+        &quot;k1&quot; = &quot;v1&quot;
+        &quot;k2&quot; = &quot;v2&quot;
+      }
+    }
+  }
+
+  data-response = {
+    body = {
+      type = &quot;JSON&quot;
+    }
+
+    persistence = {
+      type = &quot;FileSystem&quot;
+      file-format = &quot;JSON&quot;
+      file-path = &quot;/tmp/body&quot;
+    }
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="jsondatabody">
+<h2>JSONDataBody<a class="headerlink" href="#jsondatabody" title="Permalink to this heading"></a></h2>
+<p>In its simplest form, the request’s body can be set as a json string.</p>
+<p>A json body can be set on a request in checkpoint file in the below manner:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>body = {
+  type = &quot;JSONDataBody&quot;
+  data = &quot;&quot;&quot;{&quot;k1&quot;: &quot;v1&quot;, &quot;k2&quot;, &quot;v2&quot;}&quot;&quot;&quot;
+}
+</pre></div>
+</div>
+<p>Below is the full example of checkpoint file:</p>
+<div class="highlight-hocon notranslate"><div class="highlight"><pre><span></span>name = &quot;checkpoint_text_data_request_body&quot;
+
+data = {
+  data-request = {
+    url = &quot;http://localhost:8080/text-data-request-body&quot;
+
+    body = {
+      type = &quot;JSONDataBody&quot;
+      data = &quot;&quot;&quot;{&quot;k1&quot;: &quot;v1&quot;, &quot;k2&quot;, &quot;v2&quot;}&quot;&quot;&quot;
+    }
+  }
+
+  data-response = {
+    body = {
+      type = &quot;JSON&quot;
+    }
+
+    persistence = {
+      type = &quot;FileSystem&quot;
+      file-format = &quot;JSON&quot;
+      file-path = &quot;/tmp/body&quot;
+    }
+  }
+}
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="restonomer_pagination.html" class="btn btn-neutral float-left" title="What is Restonomer Pagination ?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="restonomer_response_body_formats.html" class="btn btn-neutral float-right" title="JSON" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Clairvoyant.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
