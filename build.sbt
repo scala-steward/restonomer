@@ -77,13 +77,14 @@ ThisBuild / wartremoverErrors ++= Warts.allBut(
 // ----- TOOL VERSIONS ----- //
 
 val catsVersion = "2.10.0"
-val dataScalaxyReaderVersion = "2.0.0"
+val dataScalaxyReaderTextVersion = "2.0.0"
+val dataScalaxyReaderExcelVersion = "1.0.0"
 val dataScalaxyTestUtilVersion = "1.0.0"
 val dataScalaxyTransformerVersion = "1.2.0"
 val dataScalaxyWriterAWSVersion = "2.0.0"
 val dataScalaxyWriterGCPVersion = "2.0.0"
 val dataScalaxyWriterLocalFileSystemVersion = "2.0.0"
-val googleCloudStorageVersion = "2.36.0"
+val googleCloudStorageVersion = "2.36.1"
 val jsonPathVersion = "2.9.0"
 val jwtCoreVersion = "10.0.0"
 val monovoreDeclineVersion = "2.4.1"
@@ -103,7 +104,8 @@ val catsDependencies = Seq(
 )
 
 val dataScalaxyReaderDependencies = Seq(
-  "com.clairvoyant.data.scalaxy" %% "reader-text" % dataScalaxyReaderVersion
+  "com.clairvoyant.data.scalaxy" %% "reader-text" % dataScalaxyReaderTextVersion,
+  "com.clairvoyant.data.scalaxy" %% "reader-excel" % dataScalaxyReaderExcelVersion
 )
 
 val dataScalaxyTestUtilDependencies = Seq(
