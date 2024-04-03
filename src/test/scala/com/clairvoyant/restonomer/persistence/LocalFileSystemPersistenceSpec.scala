@@ -60,7 +60,13 @@ class LocalFileSystemPersistenceSpec extends DataFrameReader with DataFrameMatch
 
       localFileSystemPersistence.persist(restonomerResponseDF)
 
-      val actualDF = readXMLFromFile(dataFrameToFileSystemWriterOutputDirPath)
+      val actualDF = readXMLFromFile(
+        path = dataFrameToFileSystemWriterOutputDirPath,
+        xmlOptions = Map(
+          "rootTag" -> "ROWS",
+          "rowTag" -> "ROW"
+        )
+      )
 
       actualDF should matchExpectedDataFrame(restonomerResponseDF)
     }
